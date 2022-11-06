@@ -17,7 +17,7 @@ class Room(models.Model):
     capacity = models.IntegerField()
 
     def __str__(self):
-        return f'{self.number},{self.category} with {self.beds} for {self.capacity} people'
+        return f'{self.number},{self.category} with {self.beds} bed(s) for {self.capacity} people'
 
 
 class Booking(models.Model):
@@ -27,4 +27,4 @@ class Booking(models.Model):
     check_out = models.DateTimeField()
 
     def __str__(self):
-        return f'{self.user} has booked {self.room} from {self.check_in} to {self.check_out}'
+        return f'{self.user} has booked Room {self.room} from {self.check_in} to {self.check_out}'
