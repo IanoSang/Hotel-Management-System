@@ -46,7 +46,7 @@ INSTALLED_APPS = [
 
     #OWN
     'app.apps.AppConfig',
-    'app.booking_functions'
+    'app.booking_functions',
     'crispy_forms',
     'cloudinary',
     'bootstrap5',
