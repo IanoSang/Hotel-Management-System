@@ -16,7 +16,7 @@ def RoomListView(request):
     for room_category in room_categories:
         room = room_categories.get(room_category)
         room_url = reverse('app:RoomDetailView', kwargs={
-                           'category': room_category})
+            'category': room_category})
 
         room_list.append((room, room_url))
     context = {
@@ -24,8 +24,17 @@ def RoomListView(request):
     }
     return render(request, 'room_list_view.html', context)
 
+
 class BookingList(ListView):
     model = Booking
+
+    def get_queryset(self, *args, **kwargs):
+        if self.request.user.is_staff:
+            booking_list = Booking.objects.all()
+            return booking_list
+        else:
+            booking_list = Booking.objects.filter(user=self.request.user)
+            return booking_list
 
 
 class RoomDetailView(View):
