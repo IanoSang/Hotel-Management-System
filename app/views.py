@@ -37,6 +37,7 @@ class BookingList(ListView):
             return booking_list
 
 
+
 class RoomDetailView(View):
     def get(self, request, *args, **kwargs):
         category = self.kwargs.get('category', None)
